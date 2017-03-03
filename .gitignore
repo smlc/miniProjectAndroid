@@ -10,7 +10,7 @@
 *.iml
 .idea/gradle.xml
 .idea/dictionaries
-
+.idea
 # Built application files
 *.apk
 *.ap_
