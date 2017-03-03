@@ -8,10 +8,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        addListenerOnButton();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users");
@@ -27,5 +30,20 @@ public class MainActivity extends AppCompatActivity {
         //myRef.setValue("Hello, World!");
         //System.out.println("Write");
     }
+    
+     public void addListenerOnButton() {
+
+        final Context context = this;
+        button = (Button) findViewById(R.id.btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AuthenficationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
 }
 
