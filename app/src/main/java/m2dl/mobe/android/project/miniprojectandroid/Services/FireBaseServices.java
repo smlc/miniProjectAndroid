@@ -1,6 +1,7 @@
 package m2dl.mobe.android.project.miniprojectandroid.Services;
 
-import android.widget.Toast;
+import android.content.Context;
+import android.content.Intent;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -10,6 +11,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Iterator;
 
+import m2dl.mobe.android.project.miniprojectandroid.AuthenficationActivity;
 import m2dl.mobe.android.project.miniprojectandroid.Domain.User;
 
 /**
@@ -35,7 +37,7 @@ public class FireBaseServices {
 
     }
 
-    public void connection(final User user){
+    public void connectionAndStartAcceuilActivity(final User user, final Context context){
 
         DatabaseReference mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("users");
@@ -50,9 +52,17 @@ public class FireBaseServices {
                 Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator();
 
                 while(it.hasNext()){
-                    User userFind = it.next().getValue(User.class);
-                    if(user.getEmailUser().equals(userFind.getEmailUser()) &&
-                            user.getPswUser().equals(userFind.getPswUser())){
+                    User userInBase = it.next().getValue(User.class);
+                    if(userFound(userInBase, user)){
+
+                        Intent activiteAcceuil = new Intent(context, AcceuilActivity.class);
+
+                        //TODO user en parceble
+                        //activiteAcceuil.putExtra("m2dl.mobe.android.project.miniprojectandroid.Services", user);
+
+
+                        // Puis on lance l'intent !
+                        context.startActivity(activiteAcceuil);
 
                     }
 
@@ -70,6 +80,11 @@ public class FireBaseServices {
 
         mUserReference.addValueEventListener(postListener);
 
+    }
+
+    private boolean userFound(User userFind, User user) {
+        return user.getEmailUser().equals(userFind.getEmailUser()) &&
+                user.getPswUser().equals(userFind.getPswUser());
     }
 
 }
