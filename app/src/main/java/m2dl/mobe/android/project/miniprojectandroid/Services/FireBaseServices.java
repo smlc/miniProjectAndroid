@@ -3,6 +3,8 @@ package m2dl.mobe.android.project.miniprojectandroid.Services;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import m2dl.mobe.android.project.miniprojectandroid.Domain.User;
+
 /**
  * Created by MarS on 03/03/2017.
  */
@@ -20,10 +22,10 @@ public class FireBaseServices {
         DatabaseReference myRef = database.getReference("users");
 
         DatabaseReference userChild = myRef.push();
-       /* userChild.child("nom").setValue(user.get);
-        userChild.child("prenom").setValue(user);
-        userChild.child("photo").setValue(user);
-        userChild.child("email").setValue();
-        userChild.child("mdp").setValue();*/
+        userChild.child("nom").setValue(user.getNomUser());
+        userChild.child("prenom").setValue(user.getPrenomUser());
+        userChild.child("photo").setValue(user.getPhotoUser());
+        userChild.child("email").setValue(user.getEmailUser());
+        userChild.child("mdp").setValue(user.getPswUser());
     }
 }

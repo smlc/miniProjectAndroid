@@ -1,7 +1,5 @@
 package m2dl.mobe.android.project.miniprojectandroid.Domain;
 
-import android.provider.ContactsContract;
-
 /**
  * Created by Jaafar Diami on 03/03/2017.
  */
@@ -9,16 +7,16 @@ import android.provider.ContactsContract;
 public class User {
 
     private String nomUser;
-    private String prénomUser;
+    private String prenomUser;
     private String photoUser;
     private String emailUser;
     private String pswUser;
 
     //Constructor
-    public User(String pswUser, String emailUser, String prénomUser, String nomUser, String photoUser) {
+    public User(String pswUser, String emailUser, String prenomUser, String nomUser, String photoUser) {
         this.pswUser = pswUser;
         this.emailUser = emailUser;
-        this.prénomUser = prénomUser;
+        this.prenomUser = prenomUser;
         this.nomUser = nomUser;
         this.photoUser = photoUser;
     }
@@ -33,12 +31,12 @@ public class User {
         this.nomUser = nomUser;
     }
 
-    public String getPrénomUser() {
-        return prénomUser;
+    public String getPrenomUser() {
+        return prenomUser;
     }
 
-    public void setPrénomUser(String prénomUser) {
-        this.prénomUser = prénomUser;
+    public void setPrenomUser(String prenomUser) {
+        this.prenomUser = prenomUser;
     }
 
     public String getPhotoUser() {
