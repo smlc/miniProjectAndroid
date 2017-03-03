@@ -13,6 +13,9 @@ public class User {
     private String pswUser;
 
     //Constructor
+    public User(){
+    }
+
     public User(String pswUser, String emailUser, String prenomUser, String nomUser, String photoUser) {
         this.pswUser = pswUser;
         this.emailUser = emailUser;
@@ -61,5 +64,16 @@ public class User {
 
     public void setPswUser(String pswUser) {
         this.pswUser = pswUser;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "nomUser='" + nomUser + '\'' +
+                ", prenomUser='" + prenomUser + '\'' +
+                ", photoUser='" + photoUser + '\'' +
+                ", emailUser='" + emailUser + '\'' +
+                ", pswUser='" + pswUser + '\'' +
+                '}';
     }
 }
