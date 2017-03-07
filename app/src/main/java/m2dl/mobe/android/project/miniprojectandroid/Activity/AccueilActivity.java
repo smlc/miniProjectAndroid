@@ -19,9 +19,6 @@ public class AccueilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_accueil);
 
 
-
-
-
     }
 
 

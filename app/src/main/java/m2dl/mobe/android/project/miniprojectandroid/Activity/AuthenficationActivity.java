@@ -53,7 +53,7 @@ public class AuthenficationActivity extends AppCompatActivity {
         final EditText password2 = (EditText) findViewById(R.id.password2);
 
 
-        //TODO comparer les deux password
+
         Button passswordBtn = (Button) findViewById(R.id.signUp);
 
         final FireBaseServices fireBaseServices = new FireBaseServices();

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MiniProjectAndroid</string>
     <string name="avtivity_accueil_title">eCampus</string>
+    <string name="avtivity_accueil_mafac">M@ Fac</string>
+    <string name="avtivity_accueil_mescours">Mes Cours</string>
+    <string name="avtivity_accueil_configuration">Configuration</string>
 </resources>

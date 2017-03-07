@@ -10,7 +10,7 @@ import android.widget.Button;
 
 
 import m2dl.mobe.android.project.miniprojectandroid.R;
-import m2dl.mobe.android.project.miniprojectandroid.Services.FireBaseServices;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,10 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FireBaseServices fireBaseServices = new FireBaseServices();
-        fireBaseServices.then()
         addListenerOnButton();
-
     }
     
      public void addListenerOnButton() {
