@@ -14,10 +14,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="87dp"
-        android:text="M@ Fac" />
+        android:layout_marginTop="28dp"
+        android:text="M@ Fac"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button3"
@@ -37,8 +37,8 @@
         android:text="@string/avtivity_accueil_configuration"
         tools:text="@string/avtivity_accueil_configuration"
         android:layout_below="@+id/button3"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
@@ -48,6 +48,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:text="@string/avtivity_accueil_title"
-        android:textSize="30sp"
+        android:textSize="36sp"
         tools:text="@string/avtivity_accueil_title" />
 </RelativeLayout>
