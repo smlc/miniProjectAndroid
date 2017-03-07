@@ -2,6 +2,8 @@ package m2dl.mobe.android.project.miniprojectandroid.Services;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -11,7 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Iterator;
 
-import m2dl.mobe.android.project.miniprojectandroid.AuthenficationActivity;
+import m2dl.mobe.android.project.miniprojectandroid.Activity.AccueilActivity;
 import m2dl.mobe.android.project.miniprojectandroid.Domain.User;
 
 /**
@@ -37,10 +39,11 @@ public class FireBaseServices {
 
     }
 
-    public void connectionAndStartAcceuilActivity(final User user, final Context context){
+    public void connectionAndStartAcceuilActivity(final String userName, final String password, final Context context){
 
         DatabaseReference mUserReference = FirebaseDatabase.getInstance().getReference()
                 .child("users");
+
 
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -53,19 +56,19 @@ public class FireBaseServices {
 
                 while(it.hasNext()){
                     User userInBase = it.next().getValue(User.class);
-                    if(userFound(userInBase, user)){
+                    if(isAUser(userInBase, userName,password)){
 
-                        Intent activiteAcceuil = new Intent(context, AcceuilActivity.class);
+                        Intent activiteAcceuil = new Intent(context, AccueilActivity.class);
 
-                        //TODO user en parceble
-                        //activiteAcceuil.putExtra("m2dl.mobe.android.project.miniprojectandroid.Services", user);
+
+                        activiteAcceuil.putExtra("m2dl.mobe.android.project.miniprojectandroid.Services", userInBase);
 
 
                         // Puis on lance l'intent !
                         context.startActivity(activiteAcceuil);
 
-                    }
 
+                    }
 
                 }
             }
@@ -78,13 +81,15 @@ public class FireBaseServices {
 
         };
 
-        mUserReference.addValueEventListener(postListener);
+        mUserReference.addListenerForSingleValueEvent(postListener);
 
     }
 
-    private boolean userFound(User userFind, User user) {
-        return user.getEmailUser().equals(userFind.getEmailUser()) &&
-                user.getPswUser().equals(userFind.getPswUser());
+
+    private boolean isAUser(User userFind, String userName, String password) {
+        return userName.equals(userFind.getEmailUser()) &&
+                password.equals(userFind.getPswUser());
     }
+
 
 }

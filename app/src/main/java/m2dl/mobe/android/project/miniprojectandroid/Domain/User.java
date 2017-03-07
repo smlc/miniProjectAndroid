@@ -1,10 +1,26 @@
 package m2dl.mobe.android.project.miniprojectandroid.Domain;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Jaafar Diami on 03/03/2017.
  */
 
-public class User {
+public class User implements Parcelable{
+
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
 
     private String nomUser;
     private String prenomUser;
@@ -24,6 +40,13 @@ public class User {
         this.photoUser = photoUser;
     }
 
+    public User(Parcel in) {
+        nomUser = in.readString();
+        prenomUser = in.readString();
+        photoUser = in.readString();
+        emailUser = in.readString();
+        pswUser = in.readString();
+    }
     //Accessors
 
     public String getNomUser() {
@@ -66,14 +89,18 @@ public class User {
         this.pswUser = pswUser;
     }
 
+
     @Override
-    public String toString() {
-        return "User{" +
-                "nomUser='" + nomUser + '\'' +
-                ", prenomUser='" + prenomUser + '\'' +
-                ", photoUser='" + photoUser + '\'' +
-                ", emailUser='" + emailUser + '\'' +
-                ", pswUser='" + pswUser + '\'' +
-                '}';
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nomUser);
+        dest.writeString(prenomUser);
+        dest.writeString(photoUser);
+        dest.writeString(emailUser);
+        dest.writeString(pswUser);
     }
 }

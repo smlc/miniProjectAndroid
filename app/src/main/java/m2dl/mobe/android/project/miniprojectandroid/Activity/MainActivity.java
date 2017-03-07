@@ -1,4 +1,4 @@
-package m2dl.mobe.android.project.miniprojectandroid;
+package m2dl.mobe.android.project.miniprojectandroid.Activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+
+
+import m2dl.mobe.android.project.miniprojectandroid.R;
+import m2dl.mobe.android.project.miniprojectandroid.Services.FireBaseServices;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -16,18 +21,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FireBaseServices fireBaseServices = new FireBaseServices();
+        fireBaseServices.then()
         addListenerOnButton();
 
     }
     
      public void addListenerOnButton() {
 
-        final Context context = this;
-        button = (Button) findViewById(R.id.btn1);
+        button = (Button) findViewById(R.id.btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, AuthenficationActivity.class);
+                Intent intent = new Intent(MainActivity.this, AuthenficationActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MiniProjectAndroid</string>
+    <string name="avtivity_accueil_title">eCampus</string>
 </resources>
