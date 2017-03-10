@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".Activity.AuthenficationActivity"></activity>
         <activity android:name=".Activity.AccueilActivity"></activity>
+        <activity android:name=".Activity.OccupationActivity"></activity>
     </application>
 
 </manifest>

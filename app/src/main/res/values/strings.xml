@@ -4,4 +4,9 @@
     <string name="avtivity_accueil_mafac">M@ Fac</string>
     <string name="avtivity_accueil_mescours">Mes Cours</string>
     <string name="avtivity_accueil_configuration">Configuration</string>
+
+    <string-array name="time_occupation_arrays">
+        <item>Jour</item>
+        <item>Heure</item>
+    </string-array>
 </resources>
