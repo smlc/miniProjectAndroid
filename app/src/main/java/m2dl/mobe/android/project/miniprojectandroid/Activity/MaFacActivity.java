@@ -28,10 +28,10 @@ public class MaFacActivity extends TabActivity {
         TabHostWindow.addTab(TabMenu1);
 
 
-        /*TabHost.TabSpec TabMenu2 = TabHostWindow.newTabSpec("Second tab");
-        TabMenu2.setIndicator("Anomalie");
-        TabMenu2.setContent(new Intent(this,AnomalieActivity.class));
-        TabHostWindow.addTab(TabMenu1);*/
+        TabHost.TabSpec TabMenu2 = TabHostWindow.newTabSpec("Second tab");
+        TabMenu2.setIndicator("Occupation");
+        TabMenu2.setContent(new Intent(this,OccupationActivity.class));
+        TabHostWindow.addTab(TabMenu2);
 
 
     }

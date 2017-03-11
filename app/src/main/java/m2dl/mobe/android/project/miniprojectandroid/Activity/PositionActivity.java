@@ -2,6 +2,7 @@ package m2dl.mobe.android.project.miniprojectandroid.Activity;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ import m2dl.mobe.android.project.miniprojectandroid.Domain.Batiment;
 import m2dl.mobe.android.project.miniprojectandroid.Domain.OccupationJour;
 import m2dl.mobe.android.project.miniprojectandroid.R;
 import m2dl.mobe.android.project.miniprojectandroid.Services.ExpandableListAdapter;
+import m2dl.mobe.android.project.miniprojectandroid.Services.LocationListenerServices;
 
 public class PositionActivity extends FragmentActivity {
 
@@ -42,6 +44,10 @@ public class PositionActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_position);
+
+
+        //Lancement du service pour mettre à jour la position de l'utilisateur
+        startService(new Intent(PositionActivity.this, LocationListenerServices.class));
 
         expListView = (ExpandableListView) findViewById(R.id.expandableList);
 
@@ -66,8 +72,16 @@ public class PositionActivity extends FragmentActivity {
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent activiteMap = new Intent(PositionActivity.this, MapsActivity.class);
-                startActivity(activiteMap);
+
+                Batiment batiment = (Batiment) listAdapter.getChild(groupPosition,childPosition);
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("google.navigation:q=" + batiment.getLat()+","+batiment.getLongi()+"&mode=w"));
+
+                intent.setPackage("com.google.android.apps.maps");
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+
                 return true;
             }
         });
