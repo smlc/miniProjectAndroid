@@ -31,7 +31,6 @@ import m2dl.mobe.android.project.miniprojectandroid.Services.LocationListenerSer
 public class PositionActivity extends FragmentActivity {
 
 
-
     private ArrayList<Batiment> batimentsList  = new ArrayList<>();
     private List<String> listDataHeader;
     private HashMap<String, List<Batiment>> listDataChild;
@@ -49,9 +48,8 @@ public class PositionActivity extends FragmentActivity {
 
         expListView = (ExpandableListView) findViewById(R.id.expandableList);
 
-        prepareListData();
 
-        final ArrayAdapter<Batiment> arrayAdapter = new ArrayAdapter<Batiment>(this,android.R.layout.simple_list_item_1,batimentsList);
+        prepareListData();
 
         final ExpandableListAdapter listAdapter = new ExpandableListAdapter(this,listDataHeader,listDataChild);
 
@@ -135,7 +133,6 @@ public class PositionActivity extends FragmentActivity {
         listDataChild.put(listDataHeader.get(1), new ArrayList<Batiment>());
         listDataChild.put(listDataHeader.get(2), new ArrayList<Batiment>());
         listDataChild.put(listDataHeader.get(3), new ArrayList<Batiment>());
-        listDataChild.put(listDataHeader.get(4), new ArrayList<Batiment>());
 
 
     }
