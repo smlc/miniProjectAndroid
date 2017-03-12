@@ -26,6 +26,7 @@ public class LocationListener implements android.location.LocationListener {
 
     // A 100 m du batiment
     private static final float DISTANCE_DU_BATIMENT = 100;
+    private static final int TWO_MINUTES = 1000 * 60 * 30;
     Location mLastLocation;
     private FirebaseDatabase database;
 
@@ -37,7 +38,6 @@ public class LocationListener implements android.location.LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        //Vérifier si location égal RU
 
 
         mLastLocation.set(location);
@@ -63,22 +63,24 @@ public class LocationListener implements android.location.LocationListener {
 
     private void fireBatimentBaseListener(final Location location) {
         database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference("batiments");
+        final DatabaseReference myRefBatiment = database.getReference("batiments");
 
 
-        myRef.addChildEventListener(new ChildEventListener() {
+        myRefBatiment.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Batiment batiment = dataSnapshot.getValue(Batiment.class);
-                System.out.println("Changement location");
+
                 Location batiementLocation = new Location("ME");
                 batiementLocation.setLatitude(batiment.getLat());
                 batiementLocation.setLongitude(batiment.getLongi());
-                System.out.println(location.distanceTo(batiementLocation));
+
+
+
                 if(location.distanceTo(batiementLocation) < DISTANCE_DU_BATIMENT){
                     int newNbOccupant = batiment.getNbrOccupant().getNbrOccupJour() + 1;
                     batiment.getNbrOccupant().setNbrOccupJour(newNbOccupant);
-                    myRef.child(dataSnapshot.getKey()).setValue(batiment);
+                    myRefBatiment.child(dataSnapshot.getKey()).setValue(batiment);
                 }
 
             }
@@ -104,6 +106,7 @@ public class LocationListener implements android.location.LocationListener {
             }
         });
     }
+
 
 
 

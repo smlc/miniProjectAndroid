@@ -24,18 +24,16 @@ import java.util.HashMap;
 import java.util.List;
 
 import m2dl.mobe.android.project.miniprojectandroid.Domain.Batiment;
-import m2dl.mobe.android.project.miniprojectandroid.Domain.OccupationJour;
 import m2dl.mobe.android.project.miniprojectandroid.R;
 import m2dl.mobe.android.project.miniprojectandroid.Services.ExpandableListAdapter;
 import m2dl.mobe.android.project.miniprojectandroid.Services.LocationListenerServices;
 
 public class PositionActivity extends FragmentActivity {
 
-    private ListView batimentListView;
+
 
     private ArrayList<Batiment> batimentsList  = new ArrayList<>();
     private List<String> listDataHeader;
-    //List<Batiment> listDataChild;
     private HashMap<String, List<Batiment>> listDataChild;
     private FirebaseDatabase database;
     private ExpandableListView expListView;
@@ -51,7 +49,6 @@ public class PositionActivity extends FragmentActivity {
 
         expListView = (ExpandableListView) findViewById(R.id.expandableList);
 
-      //  batimentListView = (ListView) findViewById(R.id.batimentListView);
         prepareListData();
 
         final ArrayAdapter<Batiment> arrayAdapter = new ArrayAdapter<Batiment>(this,android.R.layout.simple_list_item_1,batimentsList);
@@ -90,7 +87,6 @@ public class PositionActivity extends FragmentActivity {
     private void fireBaseListener(final ExpandableListAdapter listAdapter) {
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("batiments");
-
 
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -131,9 +127,15 @@ public class PositionActivity extends FragmentActivity {
 
         listDataHeader.add("Services");
         listDataHeader.add("Administration");
+        listDataHeader.add("Enseignement");
+        listDataHeader.add("Amphithéâtre");
+
 
         listDataChild.put(listDataHeader.get(0), new ArrayList<Batiment>()); // Header, Child data
         listDataChild.put(listDataHeader.get(1), new ArrayList<Batiment>());
+        listDataChild.put(listDataHeader.get(2), new ArrayList<Batiment>());
+        listDataChild.put(listDataHeader.get(3), new ArrayList<Batiment>());
+        listDataChild.put(listDataHeader.get(4), new ArrayList<Batiment>());
 
 
     }

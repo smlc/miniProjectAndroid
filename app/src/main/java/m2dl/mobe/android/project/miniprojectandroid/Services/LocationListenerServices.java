@@ -17,7 +17,7 @@ public class LocationListenerServices extends Service {
     private static final String TAG = "GPSTRACKER";
     private LocationManager mLocationManager = null;
     private static final int LOCATION_INTERVAL = 3000;
-    private static final float LOCATION_DISTANCE = 10f;
+    private static final float LOCATION_DISTANCE = 200f; //update distance si changement de 200 m
 
     LocationListener[] mLocationListeners = new LocationListener[] {
             new LocationListener(LocationManager.GPS_PROVIDER),
