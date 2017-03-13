@@ -28,6 +28,7 @@
         <activity android:name=".Activity.AccueilActivity"></activity>
         <activity android:name=".Activity.OccupationActivity"></activity>
         <activity android:name=".Activity.MaFacActivity" />
+        <activity android:name=".Activity.EmploiDuTempsActivity"></activity>
 
 
         <!--
