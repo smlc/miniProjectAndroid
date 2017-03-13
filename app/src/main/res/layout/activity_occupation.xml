@@ -22,6 +22,33 @@
             android:entries="@array/time_occupation_arrays"
             android:id="@+id/spinner" />
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioRU">
+
+            <RadioButton
+                android:text="RU1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioBtn1"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:text="RU2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioBtn2"
+                android:layout_weight="1" />
+
+        </RadioGroup>
+
+        <TextView
+            android:text="Graph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvRU" />
+
         <com.jjoe64.graphview.GraphView
             android:layout_width="match_parent"
             android:layout_height="200dip"
