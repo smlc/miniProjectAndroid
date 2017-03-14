@@ -29,6 +29,17 @@ public class AccueilActivity extends AppCompatActivity {
                 startActivity(activiteMaFac);
             }
         });
+
+        Button buttonMesCours = (Button) findViewById(R.id.buttonMesCours);
+
+
+        buttonMesCours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activiteMesCours = new Intent(AccueilActivity.this, MesCoursActivity.class);
+                startActivity(activiteMesCours);
+            }
+        });
     }
 
 
