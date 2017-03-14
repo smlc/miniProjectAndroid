@@ -25,5 +25,11 @@ public class MesCoursActivity extends TabActivity {
         TabMenu1.setIndicator("QR Code Reader");
         TabMenu1.setContent(new Intent(this,QRCodeActivity.class));
         TabHostWindow.addTab(TabMenu1);
+
+        //Emplois du temps tab
+        TabHost.TabSpec TabMenu2 = TabHostWindow.newTabSpec("Second tab");
+        TabMenu2.setIndicator("EDT");
+        TabMenu2.setContent(new Intent(this,EmploiDuTempsActivity.class));
+        TabHostWindow.addTab(TabMenu2);
     }
 }
