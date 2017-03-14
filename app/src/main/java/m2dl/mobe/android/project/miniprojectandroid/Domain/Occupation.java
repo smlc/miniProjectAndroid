@@ -6,18 +6,22 @@ package m2dl.mobe.android.project.miniprojectandroid.Domain;
 
 public class Occupation {
 
-    private Integer nbrOccupJour;
-    private Integer nbrOccupHeure;
+    private int nbrOccupJour;
+    private int nbrOccupHeure;
 
+
+    public Occupation(){
+
+    }
     //Constructor
-    public Occupation(Integer nbrOccupJour, Integer nbrOccupHeure) {
+    public Occupation(int nbrOccupJour, int nbrOccupHeure) {
         this.nbrOccupJour = nbrOccupJour;
         this.nbrOccupHeure = nbrOccupHeure;
     }
 
     //Accessors
 
-    public Integer getNbrOccupJour() {
+    public int getNbrOccupJour() {
         return nbrOccupJour;
     }
 
@@ -25,7 +29,7 @@ public class Occupation {
         this.nbrOccupJour = nbrOccupJour;
     }
 
-    public Integer getNbrOccupHeure() {
+    public int getNbrOccupHeure() {
         return nbrOccupHeure;
     }
 

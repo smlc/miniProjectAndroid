@@ -19,7 +19,29 @@ public class AccueilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_accueil);
 
 
+        Button buttonMaFac = (Button) findViewById(R.id.buttonMaFac);
+
+
+        buttonMaFac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activiteMaFac = new Intent(AccueilActivity.this, MaFacActivity.class);
+                startActivity(activiteMaFac);
+            }
+        });
+
+        Button buttonMesCours = (Button) findViewById(R.id.buttonMesCours);
+
+
+        buttonMesCours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activiteMesCours = new Intent(AccueilActivity.this, MesCoursActivity.class);
+                startActivity(activiteMesCours);
+            }
+        });
     }
+
 
 
 }

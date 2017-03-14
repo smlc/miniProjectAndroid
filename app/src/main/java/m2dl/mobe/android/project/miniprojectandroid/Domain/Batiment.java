@@ -11,19 +11,43 @@ import android.location.*;
 public class Batiment {
 
     private String nom;
-    private Location positionBatiment;
+
     private Occupation nbrOccupant;
     private String typeBatiment;
+    private double lat;
+    private double longi;
 
+    public Batiment(){
+
+    }
     //Constructor
-    public Batiment(String nom, Occupation nbrOccupant, String typeBatiment, Location position) {
+    public Batiment(String nom, Occupation nbrOccupant, String typeBatiment, double lat, double longi) {
         this.nom = nom;
         this.nbrOccupant = nbrOccupant;
         this.typeBatiment = typeBatiment;
-        this.positionBatiment = position;
+       this.lat = lat;
+        this.longi = longi;
     }
 
     //Accessors
+
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLongi() {
+        return longi;
+    }
+
+    public void setLongi(double longi) {
+        this.longi = longi;
+    }
+
     public String getNom() {
         return nom;
     }
@@ -32,13 +56,6 @@ public class Batiment {
         this.nom = nom;
     }
 
-    public Location getPosition() {
-        return positionBatiment;
-    }
-
-    public void setPosition(Location position) {
-        this.positionBatiment = position;
-    }
 
     public Occupation getNbrOccupant() {
         return nbrOccupant;
@@ -56,5 +73,8 @@ public class Batiment {
         this.typeBatiment = typeBatiment;
     }
 
-
+    @Override
+    public String toString() {
+        return nom;
+    }
 }
