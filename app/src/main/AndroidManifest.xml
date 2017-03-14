@@ -38,6 +38,7 @@
         <activity android:name=".Activity.AccueilActivity" />
         <activity android:name=".Activity.OccupationActivity" />
         <activity android:name=".Activity.MaFacActivity" />
+        <activity android:name=".Activity.EmploiDuTempsActivity"></activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
