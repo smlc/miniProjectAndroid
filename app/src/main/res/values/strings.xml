@@ -4,4 +4,5 @@
     <string name="avtivity_accueil_mafac">M@ Fac</string>
     <string name="avtivity_accueil_mescours">Mes Cours</string>
     <string name="avtivity_accueil_configuration">Configuration</string>
+    <string name="activity_liste_anomalie">Liste Anomalies</string>
 </resources>
