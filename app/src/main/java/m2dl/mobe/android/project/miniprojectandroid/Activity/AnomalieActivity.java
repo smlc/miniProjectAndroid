@@ -26,8 +26,10 @@ public class AnomalieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_anomalie);
 
-        anomaliesListView = (ListView) findViewById(R.id.anomaliesListView);
+        /*anomaliesListView = (ListView) findViewById(R.id.anomaliesListView);
         final ArrayAdapter<Anomalie> arrayAdapter = new ArrayAdapter<Anomalie>(this,android.R.layout.simple_list_item_1,anomalieList);
-        DatabaseReference myRef = database.getReference("anomalies");
+        DatabaseReference myRef = database.getReference("anomalies");*/
+
+
     }
 }
