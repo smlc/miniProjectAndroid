@@ -6,19 +6,24 @@ package m2dl.mobe.android.project.miniprojectandroid.Domain;
 
 public class OccupationJour {
 
+    //Tranche horaire
+    /*
+    * 0 -> 0h à 6h
+    * 1 -> 6h à 12h
+    * 2 -> 12H à 18h
+    * 3 -> 18h à 0H
+     */
     private int trancheHoraire;
-
     private int nbrOccupHour;
-    public String nomBatiment;
     private int jourSemaine;
+
     public OccupationJour(){
 
     }
 
-    public OccupationJour(int trancheHoraire, int nbrOccupHour, String nomBatiment, int jourSemaine) {
+    public OccupationJour(int trancheHoraire, int nbrOccupHour,  int jourSemaine) {
         this.trancheHoraire = trancheHoraire;
         this.nbrOccupHour = nbrOccupHour;
-        this.nomBatiment = nomBatiment;
         this.jourSemaine = jourSemaine;
     }
 
@@ -36,14 +41,6 @@ public class OccupationJour {
 
     public void setNbrOccupHour(int nbrOccupHour) {
         this.nbrOccupHour = nbrOccupHour;
-    }
-
-    public String getNomBatiment() {
-        return nomBatiment;
-    }
-
-    public void setNomBatiment(String nomBatiment) {
-        this.nomBatiment = nomBatiment;
     }
 
     public int getJourSemaine() {
