@@ -46,7 +46,7 @@ public class User implements Parcelable{
         this.anomalies = new ArrayList<>();
     }
 
-    public User(Parcel in) {
+    public  User(Parcel in) {
         nomUser = in.readString();
         prenomUser = in.readString();
         photoUser = in.readString();
