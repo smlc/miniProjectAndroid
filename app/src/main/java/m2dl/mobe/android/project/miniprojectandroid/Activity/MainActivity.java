@@ -27,28 +27,24 @@ import m2dl.mobe.android.project.miniprojectandroid.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int MY_PERMISSIONS_REQUEST_FINE_LOCATION = 100;
+    private static final int MY_PERMISSIONS_REQUEST = 100;
     private static final int MY_PERMISSIONS_REQUEST_INTERNET = 200;
     private static final int MY_PERMISSIONS_REQUEST_WRITE = 300;
     Button button;
     private FirebaseDatabase database;
     public static List<Batiment> occupationJourList = new ArrayList<>();
+    String[] permissions= new String[]{
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.INTERNET)
-                != PackageManager.PERMISSION_GRANTED ) {
-
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.INTERNET,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    MY_PERMISSIONS_REQUEST_FINE_LOCATION);
-
-
-        }
+        checkPermissions();
 
         getDataFromFireBase();
         addListenerOnButton();
@@ -107,6 +103,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    private  boolean checkPermissions() {
+        int result;
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        for (String p:permissions) {
+            result = ContextCompat.checkSelfPermission(this,p);
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(p);
+            }
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),MY_PERMISSIONS_REQUEST );
+            return false;
+        }
+        return true;
+    }
 }
 
 
