@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 o    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -39,6 +40,7 @@ o    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         <activity android:name=".Activity.OccupationActivity" />
         <activity android:name=".Activity.MaFacActivity" />
         <activity android:name=".Activity.EmploiDuTempsActivity"></activity>
+        <activity android:name=".Activity.InformationActivity"></activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

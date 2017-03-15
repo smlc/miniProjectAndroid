@@ -3,11 +3,16 @@ package m2dl.mobe.android.project.miniprojectandroid.Domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Jaafar Diami on 03/03/2017.
  */
 
 public class User implements Parcelable{
+
+
 
     public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
         @Override
@@ -21,7 +26,7 @@ public class User implements Parcelable{
         }
     };
 
-
+    private List<Anomalie> anomalies;
     private String nomUser;
     private String prenomUser;
     private String photoUser;
@@ -38,16 +43,28 @@ public class User implements Parcelable{
         this.prenomUser = prenomUser;
         this.nomUser = nomUser;
         this.photoUser = photoUser;
+        this.anomalies = new ArrayList<>();
     }
 
-    public User(Parcel in) {
+    public  User(Parcel in) {
         nomUser = in.readString();
         prenomUser = in.readString();
         photoUser = in.readString();
         emailUser = in.readString();
         pswUser = in.readString();
+        List<Anomalie> list = null;
+        in.readList(list, Anomalie.class.getClassLoader());
+        anomalies = list;
     }
     //Accessors
+
+    public List<Anomalie> getAnomalies() {
+        return anomalies;
+    }
+
+    public void setAnomalies(List<Anomalie> anomalies) {
+        this.anomalies = anomalies;
+    }
 
     public String getNomUser() {
         return nomUser;
