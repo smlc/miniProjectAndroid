@@ -70,6 +70,7 @@ public class User implements Parcelable{
         return nomUser;
     }
 
+
     public void setNomUser(String nomUser) {
         this.nomUser = nomUser;
     }
