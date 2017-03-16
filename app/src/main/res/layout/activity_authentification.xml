@@ -85,8 +85,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/login"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            style="@android:style/Widget.Button.Transparent" />
+            android:layout_weight="1" />
 
         <View
             android:layout_width="wrap_content"
@@ -227,8 +226,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/signUp"
-            style="@android:style/Widget.Button.Transparent" />
+            android:id="@+id/signUp" />
 
     </LinearLayout>
 

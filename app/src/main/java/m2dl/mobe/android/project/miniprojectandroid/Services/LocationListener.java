@@ -1,14 +1,9 @@
 package m2dl.mobe.android.project.miniprojectandroid.Services;
 
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
+
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.util.Log;
+
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -16,7 +11,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+
 import m2dl.mobe.android.project.miniprojectandroid.Domain.Batiment;
+import m2dl.mobe.android.project.miniprojectandroid.Domain.OccupationJour;
 
 /**
  * Created by MarS on 11/03/2017.
@@ -78,8 +78,15 @@ public class LocationListener implements android.location.LocationListener {
 
 
                 if(location.distanceTo(batiementLocation) < DISTANCE_DU_BATIMENT){
-                    int newNbOccupant = batiment.getNbrOccupant().getNbrOccupJour() + 1;
-                    batiment.getNbrOccupant().setNbrOccupJour(newNbOccupant);
+
+                    boolean miseAJourFaite = true;
+                    miseAJourFaite = miseAJourOccupantBatimentPourHeureActuel(batiment);
+
+                    if(!miseAJourFaite){
+
+                    }
+
+                   // batiment.getNbrOccupant().setNbrOccupJour(newNbOccupant);
                     myRefBatiment.child(dataSnapshot.getKey()).setValue(batiment);
                 }
 
@@ -107,7 +114,30 @@ public class LocationListener implements android.location.LocationListener {
         });
     }
 
+    private boolean miseAJourOccupantBatimentPourHeureActuel(Batiment batiment) {
+        boolean trancheHoraireExist = false;
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.setTime(new Date());
+        int jourDeLaSemaine  = 5;//currentDate.get(Calendar.DAY_OF_WEEK);
+        int trancheHoraire = 1;//(currentDate.get(Calendar.HOUR) / 6) - 1;
 
+        Iterator<OccupationJour> it = batiment.getOccupations().iterator();
+
+        while(it.hasNext()){
+
+            OccupationJour occupationBatiment = it.next();
+            if (occupationBatiment.getJourSemaine() == jourDeLaSemaine && occupationBatiment.getTrancheHoraire() == trancheHoraire ) {
+                int newNbOccupant = occupationBatiment.getNbrOccupHour() + 1;
+                int index = batiment.getOccupations().indexOf(occupationBatiment);
+                batiment.getOccupations().get(index).setNbrOccupHour(newNbOccupant);
+                trancheHoraireExist = true;
+            }
+
+        }
+        //retourne false si la mise a jour n'a pas été faite
+        return  trancheHoraireExist;
+
+    }
 
 
 }

@@ -10,44 +10,55 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="m2dl.mobe.android.project.miniprojectandroid.Activity.AccueilActivity">
 
-    <Button
-        android:id="@+id/buttonMaFac"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="M@ Fac"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/buttonMaFac"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonMesCours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonMaFac"
-        android:layout_alignStart="@+id/buttonMaFac"
-        android:layout_centerVertical="true"
-        android:text="@string/avtivity_accueil_mescours"
-        tools:text="@string/avtivity_accueil_mescours" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:text="@string/avtivity_accueil_title"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            tools:text="@string/avtivity_accueil_title" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:text="@string/avtivity_accueil_configuration"
-        tools:text="@string/avtivity_accueil_configuration"
-        android:layout_below="@+id/buttonMesCours"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
+        <Button
+            android:id="@+id/buttonMaFac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
+            android:text="M@ Fac" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
-        android:text="@string/avtivity_accueil_title"
-        android:textSize="36sp"
-        tools:text="@string/avtivity_accueil_title" />
+        <Button
+            android:id="@+id/buttonMesCours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/buttonMaFac"
+            android:layout_alignStart="@+id/buttonMaFac"
+            android:layout_centerVertical="true"
+            android:text="@string/avtivity_accueil_mescours"
+            tools:text="@string/avtivity_accueil_mescours" />
+
+        <Button
+            android:id="@+id/buttonConfiguration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_below="@+id/buttonMesCours"
+            android:layout_marginTop="66dp"
+            android:text="@string/avtivity_accueil_configuration"
+            tools:text="@string/avtivity_accueil_configuration" />
+
+    </LinearLayout>
 </RelativeLayout>
