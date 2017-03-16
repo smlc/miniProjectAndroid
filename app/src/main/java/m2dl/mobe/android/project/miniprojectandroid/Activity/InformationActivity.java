@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import m2dl.mobe.android.project.miniprojectandroid.R;
 
@@ -22,11 +24,23 @@ public class InformationActivity extends AppCompatActivity {
     private SeekBar brightnessControl;
     private SeekBar volumeControl;
     private float brightnessValue = 0.5f;
+    private TextView tvDev1, tvDev2, tvDev3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(210, 300);
+        (findViewById(R.id.ivDev1)).setLayoutParams(layoutParams);
+        (findViewById(R.id.ivDev2)).setLayoutParams(layoutParams);
+        (findViewById(R.id.ivDev3)).setLayoutParams(layoutParams);
+        tvDev1 = (TextView) findViewById(R.id.tvDev1);
+        tvDev2 = (TextView) findViewById(R.id.tvDev2);
+        tvDev3 = (TextView) findViewById(R.id.tvDev3);
+        tvDev1.setText("Jaafar DIAMI");
+        tvDev2.setText("Marlon SIESA");
+        tvDev3.setText("Rottana LY");
 
         brightnessControl = (SeekBar) findViewById(R.id.brightnessControl);
         brightnessControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
