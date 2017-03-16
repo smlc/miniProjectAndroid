@@ -29,6 +29,7 @@ public class AccueilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent activiteMaFac = new Intent(AccueilActivity.this, MaFacActivity.class);
+                activiteMaFac.putExtra(FireBaseServices.USER_INTENT,user);
                 startActivity(activiteMaFac);
             }
         });
