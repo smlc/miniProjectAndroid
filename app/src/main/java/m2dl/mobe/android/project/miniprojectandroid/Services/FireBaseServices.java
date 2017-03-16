@@ -2,7 +2,6 @@ package m2dl.mobe.android.project.miniprojectandroid.Services;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +21,7 @@ import m2dl.mobe.android.project.miniprojectandroid.Domain.User;
 
 public class FireBaseServices {
 
+    public static final String USER_INTENT = "m2dl.mobe.android.project.miniprojectandroid.Services";
     private FirebaseDatabase database;
     private  boolean isAUserInBase;
 
@@ -61,7 +61,7 @@ public class FireBaseServices {
                         Intent activiteAcceuil = new Intent(context, AccueilActivity.class);
 
 
-                        activiteAcceuil.putExtra("m2dl.mobe.android.project.miniprojectandroid.Services", userInBase);
+                        activiteAcceuil.putExtra(USER_INTENT, userInBase);
 
 
                         // Puis on lance l'intent !

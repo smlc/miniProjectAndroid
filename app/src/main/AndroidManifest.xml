@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-o    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
@@ -39,8 +39,8 @@ o    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         <activity android:name=".Activity.AccueilActivity" />
         <activity android:name=".Activity.OccupationActivity" />
         <activity android:name=".Activity.MaFacActivity" />
-        <activity android:name=".Activity.EmploiDuTempsActivity"></activity>
-        <activity android:name=".Activity.InformationActivity"></activity>
+        <activity android:name=".Activity.EmploiDuTempsActivity" />
+        <activity android:name=".Activity.InformationActivity" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -65,7 +65,9 @@ o    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         <activity
             android:name=".Activity.QRCodeActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity android:name=".Activity.BrowserActivity"></activity>
+        <activity android:name=".Activity.BrowserActivity" />
+        <activity android:name=".Activity.ConfigurationActivity" />
+        <activity android:name=".Activity.ParametresActivity"></activity>
     </application>
 
 </manifest>
