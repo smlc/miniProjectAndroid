@@ -18,10 +18,10 @@ public class BrowserActivity extends AppCompatActivity {
         Intent startIntent = getIntent();
 
 
-        String  url = startIntent.getStringExtra(QRCodeActivity.NOMS);
+        String  urlSite = startIntent.getStringExtra(QRCodeActivity.NOMS);
         webView = (WebView) findViewById(R.id.webviewQrcode);
 
-        webView.loadUrl(url);
+        webView.loadUrl(urlSite);
 
     }
 }

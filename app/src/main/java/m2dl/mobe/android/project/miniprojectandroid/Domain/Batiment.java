@@ -2,6 +2,10 @@ package m2dl.mobe.android.project.miniprojectandroid.Domain;
 
 import android.view.MotionEvent;
 import android.location.*;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -12,25 +16,37 @@ public class Batiment {
 
     private String nom;
 
-    private Occupation nbrOccupant;
+
     private String typeBatiment;
     private double lat;
     private double longi;
-
+    private List<OccupationJour> occupations;
     public Batiment(){
 
     }
     //Constructor
-    public Batiment(String nom, Occupation nbrOccupant, String typeBatiment, double lat, double longi) {
+    public Batiment(String nom,  String typeBatiment, double lat, double longi) {
         this.nom = nom;
-        this.nbrOccupant = nbrOccupant;
         this.typeBatiment = typeBatiment;
-       this.lat = lat;
+        this.lat = lat;
         this.longi = longi;
+        occupations = new ArrayList<>();
+        occupations.add(new OccupationJour(0,2,5));
+        occupations.add(new OccupationJour(2,7,5));
+        occupations.add(new OccupationJour(1,4,5));
+        occupations.add(new OccupationJour(3,6,7));
     }
 
     //Accessors
 
+
+    public List<OccupationJour> getOccupations() {
+        return occupations;
+    }
+
+    public void setOccupations(List<OccupationJour> occupations) {
+        this.occupations = occupations;
+    }
 
     public double getLat() {
         return lat;
@@ -56,14 +72,6 @@ public class Batiment {
         this.nom = nom;
     }
 
-
-    public Occupation getNbrOccupant() {
-        return nbrOccupant;
-    }
-
-    public void setNbrOccupant(Occupation nbrOccupant) {
-        this.nbrOccupant = nbrOccupant;
-    }
 
     public String getTypeBatiment() {
         return typeBatiment;

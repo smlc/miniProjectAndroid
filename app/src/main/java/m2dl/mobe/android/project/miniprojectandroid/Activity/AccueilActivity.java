@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import m2dl.mobe.android.project.miniprojectandroid.Domain.User;
 import m2dl.mobe.android.project.miniprojectandroid.R;
 import m2dl.mobe.android.project.miniprojectandroid.Services.FireBaseServices;
 
@@ -18,6 +19,8 @@ public class AccueilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
+        Intent startIntent = getIntent();
+        final User user = startIntent.getParcelableExtra(FireBaseServices.USER_INTENT);
 
         Button buttonMaFac = (Button) findViewById(R.id.buttonMaFac);
 
@@ -26,6 +29,7 @@ public class AccueilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent activiteMaFac = new Intent(AccueilActivity.this, MaFacActivity.class);
+                activiteMaFac.putExtra(FireBaseServices.USER_INTENT,user);
                 startActivity(activiteMaFac);
             }
         });
@@ -38,6 +42,19 @@ public class AccueilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent activiteMesCours = new Intent(AccueilActivity.this, MesCoursActivity.class);
                 startActivity(activiteMesCours);
+            }
+        });
+
+
+        Button buttonConfiguration = (Button) findViewById(R.id.buttonConfiguration);
+
+
+        buttonConfiguration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activiteConfiguration = new Intent(AccueilActivity.this, ConfigurationActivity.class);
+                activiteConfiguration.putExtra(FireBaseServices.USER_INTENT, user);
+                startActivity(activiteConfiguration);
             }
         });
     }

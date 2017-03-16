@@ -32,7 +32,7 @@ public class User implements Parcelable{
     private String photoUser;
     private String emailUser;
     private String pswUser;
-
+    private String lienEmploisTemps;
     //Constructor
     public User(){
     }

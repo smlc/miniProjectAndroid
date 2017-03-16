@@ -39,8 +39,8 @@
         <activity android:name=".Activity.AccueilActivity" />
         <activity android:name=".Activity.OccupationActivity" />
         <activity android:name=".Activity.MaFacActivity" />
-        <activity android:name=".Activity.EmploiDuTempsActivity"></activity>
-        <activity android:name=".Activity.InformationActivity"></activity>
+        <activity android:name=".Activity.EmploiDuTempsActivity" />
+        <activity android:name=".Activity.InformationActivity" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -65,7 +65,9 @@
         <activity
             android:name=".Activity.QRCodeActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity android:name=".Activity.BrowserActivity"></activity>
+        <activity android:name=".Activity.BrowserActivity" />
+        <activity android:name=".Activity.ConfigurationActivity" />
+        <activity android:name=".Activity.ParametresActivity"></activity>
     </application>
 
 </manifest>

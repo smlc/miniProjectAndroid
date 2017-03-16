@@ -1,7 +1,6 @@
 package m2dl.mobe.android.project.miniprojectandroid.Activity;
 
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,22 +10,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
+import m2dl.mobe.android.project.miniprojectandroid.Domain.Batiment;
 import m2dl.mobe.android.project.miniprojectandroid.Domain.OccupationJour;
 import m2dl.mobe.android.project.miniprojectandroid.R;
 
@@ -48,7 +39,7 @@ public class OccupationActivity extends AppCompatActivity {
 
     private static int jour = 7;
     private static int heure = 6;
-    private List<OccupationJour> occupationJourList = MainActivity.occupationJourList;
+    private List<Batiment> batimentList = MainActivity.occupationJourList;
     private int[] jourCountRU1 = new int[jour];
     private int[] jourCountRU2 = new int[jour];
     private int[] heureCountRU1 = new int[heure];
@@ -108,7 +99,7 @@ public class OccupationActivity extends AppCompatActivity {
                 new DataPoint(20, heureCountRU2[5]),
         });
         graph.addSeries(series1);
-
+        series1.setTitle("Nombre Occupant");
         graph.getViewport().setMinX(0);
         graph.getViewport().setMinY(0);
         graph.getViewport().setMaxX(20);
@@ -117,6 +108,9 @@ public class OccupationActivity extends AppCompatActivity {
 
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setYAxisBoundsManual(true);
+
+        graph.getLegendRenderer().setVisible(true);
+        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.BOTTOM);
 
         RU = "RU1";
         selectedItem = "Jour";
@@ -189,11 +183,16 @@ public class OccupationActivity extends AppCompatActivity {
 
     private int jourCountRU(String RU, int jour) {
         int count = 0;
-        for (int i=0; i<occupationJourList.size(); i++) {
-            if (occupationJourList.get(i).getNomBatiment().equals(RU)) {
-                if (occupationJourList.get(i).getJourSemaine() == jour) {
-                    count+=occupationJourList.get(i).getNbrOccupHour();
+        for (int i = 0; i< batimentList.size(); i++) {
+            if (batimentList.get(i).getNom().equals(RU)) {
+
+                for(OccupationJour occupationBatiment : batimentList.get(i).getOccupations()){
+                    if (occupationBatiment.getJourSemaine() == jour) {
+                        count+= occupationBatiment.getJourSemaine();
+                    }
                 }
+
+
             }
         }
         System.out.println("Count : " + count);
@@ -202,10 +201,12 @@ public class OccupationActivity extends AppCompatActivity {
 
     private int heureCountRU(String RU, int hour) {
         int count = 0;
-        for (int i=0; i<occupationJourList.size(); i++) {
-            if (occupationJourList.get(i).getNomBatiment().equals(RU)) {
-                if (occupationJourList.get(i).getTrancheHoraire() == hour) {
-                    count+=occupationJourList.get(i).getNbrOccupHour();
+        for (int i = 0; i< batimentList.size(); i++) {
+            if (batimentList.get(i).getNom().equals(RU)) {
+                for(OccupationJour occupationBatiment : batimentList.get(i).getOccupations()){
+                    if (occupationBatiment.getJourSemaine() == jour) {
+                        count+= occupationBatiment.getJourSemaine();
+                    }
                 }
             }
         }

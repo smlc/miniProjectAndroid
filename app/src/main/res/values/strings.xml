@@ -10,6 +10,12 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_maps">Map</string>
     <string name="qrcode_button">Scan QR Code</string>
+    <string name="login">Login</string>
+    <string name="mot_passe">Mot de passe</string>
+    <string name="lien_emplois_temps">Lien emplois du temps</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prenom</string>
+    <string name="mail">Email</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
