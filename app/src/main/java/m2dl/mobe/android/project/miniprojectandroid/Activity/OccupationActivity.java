@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import m2dl.mobe.android.project.miniprojectandroid.Domain.Batiment;
 import m2dl.mobe.android.project.miniprojectandroid.Domain.OccupationJour;
 import m2dl.mobe.android.project.miniprojectandroid.R;
 
@@ -49,7 +50,7 @@ public class OccupationActivity extends AppCompatActivity {
 
     private static int jour = 7;
     private static int heure = 6;
-    private List<OccupationJour> occupationJourList = MainActivity.occupationJourList;
+    private List<Batiment> batimentList = MainActivity.batimentList;
     private int[] jourCountRU1 = new int[jour];
     private int[] jourCountRU2 = new int[jour];
     private int[] heureCountRU1 = new int[heure];
@@ -259,11 +260,16 @@ public class OccupationActivity extends AppCompatActivity {
 
     private int jourCountRU(String RU, int jour) {
         int count = 0;
-        for (int i=0; i<occupationJourList.size(); i++) {
-            if (occupationJourList.get(i).getNomBatiment().equals(RU)) {
-                if (occupationJourList.get(i).getJourSemaine() == jour) {
-                    count+=occupationJourList.get(i).getNbrOccupHour();
+        for (int i = 0; i< batimentList.size(); i++) {
+            if (batimentList.get(i).getNom().equals(RU)) {
+
+                for(OccupationJour occupationBatiment : batimentList.get(i).getOccupations()){
+                    if (occupationBatiment.getJourSemaine() == jour) {
+                        count+= occupationBatiment.getJourSemaine();
+                    }
                 }
+
+
             }
         }
         System.out.println("Count : " + count);
@@ -272,15 +278,16 @@ public class OccupationActivity extends AppCompatActivity {
 
     private int heureCountRU(String RU, int hour) {
         int count = 0;
-        for (int i=0; i<occupationJourList.size(); i++) {
-            if (occupationJourList.get(i).getNomBatiment().equals(RU)) {
-                if (occupationJourList.get(i).getTrancheHoraire() == hour) {
-                    count+=occupationJourList.get(i).getNbrOccupHour();
+        for (int i = 0; i< batimentList.size(); i++) {
+            if (batimentList.get(i).getNom().equals(RU)) {
+                for(OccupationJour occupationBatiment : batimentList.get(i).getOccupations()){
+                    if (occupationBatiment.getJourSemaine() == jour) {
+                        count+= occupationBatiment.getJourSemaine();
+                    }
                 }
             }
         }
         System.out.println("Count : " + count);
         return count;
     }
-
 }
