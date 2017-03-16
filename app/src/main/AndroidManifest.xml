@@ -68,6 +68,7 @@
         <activity android:name=".Activity.BrowserActivity" />
         <activity android:name=".Activity.ConfigurationActivity" />
         <activity android:name=".Activity.ParametresActivity"></activity>
+        <activity android:name=".Activity.AnomalieActivity"></activity>
     </application>
 
 </manifest>

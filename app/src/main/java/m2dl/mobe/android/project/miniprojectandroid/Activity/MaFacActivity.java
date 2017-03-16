@@ -41,9 +41,8 @@ public class MaFacActivity extends TabActivity {
 
         TabHost.TabSpec TabMenu3 = TabHostWindow.newTabSpec("Third tab");
         TabMenu3.setIndicator("Annomalie");
-        TabMenu3.setContent(new Intent(this,OccupationActivity.class));
+        TabMenu3.setContent(new Intent(this,AnomalieActivity.class).putExtra(FireBaseServices.USER_INTENT,user));
         TabHostWindow.addTab(TabMenu3);
-
 
     }
 }

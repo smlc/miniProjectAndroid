@@ -61,6 +61,7 @@ public class User implements Parcelable{
     public List<Anomalie> getAnomalies() {
         return anomalies;
     }
+    
 
     public void setAnomalies(List<Anomalie> anomalies) {
         this.anomalies = anomalies;
