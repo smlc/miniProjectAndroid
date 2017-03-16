@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import m2dl.mobe.android.project.miniprojectandroid.Domain.Batiment;
+import m2dl.mobe.android.project.miniprojectandroid.Domain.OccupationJour;
 import m2dl.mobe.android.project.miniprojectandroid.R;
 
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_WRITE = 300;
     Button button;
     private FirebaseDatabase database;
-    public static List<Batiment> occupationJourList = new ArrayList<>();
+    public static List<Batiment> batimentList = new ArrayList<>();
     String[] permissions= new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Batiment occupationJourBatiment = dataSnapshot.getValue(Batiment.class);
-                occupationJourList.add(occupationJourBatiment);
+                batimentList.add(occupationJourBatiment);
 
             }
 

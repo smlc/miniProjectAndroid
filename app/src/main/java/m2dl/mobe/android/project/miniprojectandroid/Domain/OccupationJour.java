@@ -16,6 +16,7 @@ public class OccupationJour {
     private int trancheHoraire;
     private int nbrOccupHour;
     private int jourSemaine;
+    private String nomBatiment;
 
     public OccupationJour(){
 
@@ -49,5 +50,9 @@ public class OccupationJour {
 
     public void setJourSemaine(int jourSemaine) {
         this.jourSemaine = jourSemaine;
+    }
+
+    public String getNomBatiment() {
+        return nomBatiment;
     }
 }

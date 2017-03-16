@@ -19,7 +19,8 @@ public class EmploiDuTempsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emploi_du_temps);
         webView = (WebView) findViewById(R.id.webviewEDT);
-        webView.loadUrl("https://edt.univ-tlse3.fr");
+        //webView.loadUrl("https://edt.univ-tlse3.fr");
+        webView.loadUrl("https://edt.univ-tlse3.fr/FSI/FSImentionM/Info/g31090.html");
 
     }
 }
