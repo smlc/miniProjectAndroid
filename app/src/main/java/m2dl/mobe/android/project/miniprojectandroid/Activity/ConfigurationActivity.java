@@ -13,14 +13,21 @@ import m2dl.mobe.android.project.miniprojectandroid.Services.FireBaseServices;
 @SuppressWarnings("deprecation")
 public class ConfigurationActivity extends TabActivity {
 
-    TabHost TabHostWindow;
-
+    private TabHost TabHostWindow;
+    private User user;
+    private String userKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
         Intent startIntent = getIntent();
-        final User user = startIntent.getParcelableExtra(FireBaseServices.USER_INTENT);
+
+        Bundle extras = startIntent.getExtras();
+        user    = extras.getParcelable(FireBaseServices.USER_INTENT);
+        userKey  = extras.getString(FireBaseServices.USER_KEY);
+
+        //user = startIntent.getParcelableExtra(FireBaseServices.USER_INTENT);
+        //userKey = startIntent.getStringArrayExtra(FireBaseServices.USER_KEY)[1];
         TabHostWindow = (TabHost)findViewById(android.R.id.tabhost);
 
         //Position tab
@@ -32,7 +39,16 @@ public class ConfigurationActivity extends TabActivity {
 
         TabHost.TabSpec TabMenu2 = TabHostWindow.newTabSpec("Second tab");
         TabMenu2.setIndicator("Paramètres");
-        TabMenu2.setContent(new Intent(this,ParametresActivity.class).putExtra(FireBaseServices.USER_INTENT, user));
+        Intent activityParametres = new Intent(this,ParametresActivity.class);
+
+
+        extras.putParcelable(FireBaseServices.USER_INTENT,user);
+        extras.putString(FireBaseServices.USER_KEY,userKey);
+        activityParametres.putExtras(extras);
+        //activityParametres.putExtra(FireBaseServices.USER_KEY, userKey);
+        //activityParametres.putExtra(FireBaseServices.USER_INTENT, user);
+
+        TabMenu2.setContent(activityParametres);
         TabHostWindow.addTab(TabMenu2);
     }
 }

@@ -14,14 +14,21 @@ import m2dl.mobe.android.project.miniprojectandroid.Services.FireBaseServices;
 
 public class AccueilActivity extends AppCompatActivity {
 
+    private User user;
+    private String userKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
         Intent startIntent = getIntent();
-        final User user = startIntent.getParcelableExtra(FireBaseServices.USER_INTENT);
 
+        Bundle extras = startIntent.getExtras();
+        user    = extras.getParcelable(FireBaseServices.USER_INTENT);
+        userKey  = extras.getString(FireBaseServices.USER_KEY);
+
+      //  final User user = startIntent.getParcelableExtra(FireBaseServices.USER_INTENT);
+       // final String userKey = startIntent.getStringArrayExtra(FireBaseServices.USER_KEY)[0];
         Button buttonMaFac = (Button) findViewById(R.id.buttonMaFac);
 
 
@@ -52,7 +59,13 @@ public class AccueilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent activiteConfiguration = new Intent(AccueilActivity.this, ConfigurationActivity.class);
-                activiteConfiguration.putExtra(FireBaseServices.USER_INTENT, user);
+
+                Bundle extras = new Bundle();
+                extras.putParcelable(FireBaseServices.USER_INTENT,user);
+                extras.putString(FireBaseServices.USER_KEY,userKey);
+                activiteConfiguration.putExtras(extras);
+               // activiteConfiguration.putExtra(FireBaseServices.USER_KEY, userKey);
+               // activiteConfiguration.putExtra(FireBaseServices.USER_INTENT, user);
                 startActivity(activiteConfiguration);
             }
         });

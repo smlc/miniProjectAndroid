@@ -63,7 +63,7 @@ public class LocationListener implements android.location.LocationListener {
 
     private void fireBatimentBaseListener(final Location location) {
         database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRefBatiment = database.getReference("batiments");
+        final DatabaseReference myRefBatiment = database.getReference("batimentOccuper");
 
 
         myRefBatiment.addChildEventListener(new ChildEventListener() {

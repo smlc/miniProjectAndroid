@@ -58,6 +58,14 @@ public class User implements Parcelable{
     }
     //Accessors
 
+    public String getLienEmploisTemps() {
+        return lienEmploisTemps;
+    }
+
+    public void setLienEmploisTemps(String lienEmploisTemps) {
+        this.lienEmploisTemps = lienEmploisTemps;
+    }
+
     public List<Anomalie> getAnomalies() {
         return anomalies;
     }

@@ -2,6 +2,7 @@ package m2dl.mobe.android.project.miniprojectandroid.Services;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +23,7 @@ import m2dl.mobe.android.project.miniprojectandroid.Domain.User;
 public class FireBaseServices {
 
     public static final String USER_INTENT = "m2dl.mobe.android.project.miniprojectandroid.Services";
+    public static final String USER_KEY = "user.key";
     private FirebaseDatabase database;
     private  boolean isAUserInBase;
 
@@ -60,9 +62,13 @@ public class FireBaseServices {
 
                         Intent activiteAcceuil = new Intent(context, AccueilActivity.class);
 
+                        Bundle extras = new Bundle();
+                        extras.putParcelable(USER_INTENT,userInBase);
+                        extras.putString(USER_KEY,dataSnapshot.getKey());
+                        activiteAcceuil.putExtras(extras);
 
-                        activiteAcceuil.putExtra(USER_INTENT, userInBase);
-
+                        //activiteAcceuil.putExtra(USER_INTENT, userInBase);
+                        //activiteAcceuil.putExtra(USER_KEY,dataSnapshot.getKey());
 
                         // Puis on lance l'intent !
                         context.startActivity(activiteAcceuil);
