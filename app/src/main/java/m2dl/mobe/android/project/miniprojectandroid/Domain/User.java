@@ -69,6 +69,7 @@ public class User implements Parcelable{
     public List<Anomalie> getAnomalies() {
         return anomalies;
     }
+    
 
     public void setAnomalies(List<Anomalie> anomalies) {
         this.anomalies = anomalies;
@@ -77,6 +78,7 @@ public class User implements Parcelable{
     public String getNomUser() {
         return nomUser;
     }
+
 
     public void setNomUser(String nomUser) {
         this.nomUser = nomUser;
