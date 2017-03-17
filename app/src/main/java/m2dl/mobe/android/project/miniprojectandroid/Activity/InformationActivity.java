@@ -2,16 +2,29 @@ package m2dl.mobe.android.project.miniprojectandroid.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.media.AudioFormat;
 import android.media.AudioManager;
+import android.media.AudioRecord;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.StrictMode;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 import m2dl.mobe.android.project.miniprojectandroid.R;
 
@@ -19,12 +32,25 @@ import m2dl.mobe.android.project.miniprojectandroid.R;
  * Created by rottanaly on 3/14/17.
  */
 
-public class InformationActivity extends AppCompatActivity {
+public class InformationActivity extends AppCompatActivity implements SensorEventListener {
 
     private SeekBar brightnessControl;
     private SeekBar volumeControl;
     private float brightnessValue = 0.5f;
     private TextView tvDev1, tvDev2, tvDev3;
+
+    private SensorManager mSensorManager;
+    private Sensor mLight;
+    private TextView tvLightSensor;
+    private ProgressBar pbLight;
+
+    /*private AudioRecord audio;
+    private Thread thread;
+    private int bufferSize;
+    private double soundLevel;
+    private int sampleRate = 8000;*/
+    private TextView tvSoundSensor;
+    private ProgressBar pbSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +111,26 @@ public class InformationActivity extends AppCompatActivity {
 
             }
         });
+
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mLight = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        tvLightSensor = (TextView) findViewById(R.id.tvLightSensor);
+        tvLightSensor.setText("Capteur de lumiere: 0lx");
+        pbLight = (ProgressBar) findViewById(R.id.progressBarLight);
+        pbLight.setMax((int) mLight.getMaximumRange());
+
+        tvSoundSensor = (TextView) findViewById(R.id.tvSoundSensor);
+        tvSoundSensor.setText("Capteur de son: 0" );
+        pbSound = (ProgressBar) findViewById(R.id.progressBarSound);
+        pbSound.setMax(200);
+
+        /*try {
+            bufferSize = AudioRecord.getMinBufferSize(sampleRate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+        } catch (Exception e) {
+            Log.e("TrackingFlow", "Exception", e);
+        }*/
+
     }
 
     private void checkPermission(int val) {
@@ -101,5 +147,84 @@ public class InformationActivity extends AppCompatActivity {
             }
         }
     }
+
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        float value_light = event.values[0];
+        tvLightSensor.setText("Capteur de lumiere: " + value_light + "lx");
+        System.out.println("Capteur de lumiere: " + value_light + "lx");
+        pbLight.setProgress((int) value_light);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_NORMAL);
+
+        /*audio = new AudioRecord(MediaRecorder.AudioSource.MIC, sampleRate,
+                AudioFormat.CHANNEL_IN_MONO,
+                AudioFormat.ENCODING_PCM_16BIT, 5000000);
+        audio.startRecording();
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (thread!=null && !thread.isInterrupted()) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    readAudioBuffer();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvSoundSensor.setText("Capteur de son: " + soundLevel);
+                            pbSound.setProgress((int) soundLevel);
+                        }
+                    });
+                }
+            }
+        });
+        thread.run();*/
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener(this);
+
+        /*thread.interrupt();
+        thread = null;
+        try {
+            if (audio != null) {
+                audio.stop();
+                audio.release();
+                audio = null;
+            }
+        } catch (Exception e) {e.printStackTrace();}*/
+    }
+
+    /*private void readAudioBuffer() {
+
+        try {
+            short[] buffer = new short[bufferSize];
+            int bufferReadResult = 1;
+            if (audio != null) {
+                bufferReadResult = audio.read(buffer, 0, bufferSize);
+                double sumLevel = 0;
+                for (int i = 0; i < bufferReadResult; i++) {
+                    sumLevel += buffer[i];
+                }
+                soundLevel = Math.abs((sumLevel / bufferReadResult)); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 
 }

@@ -83,7 +83,7 @@ public class LocationListener implements android.location.LocationListener {
                     miseAJourFaite = miseAJourOccupantBatimentPourHeureActuel(batiment);
 
                     if(!miseAJourFaite){
-
+                        //Creer nouvelle element dans la liste
                     }
 
                    // batiment.getNbrOccupant().setNbrOccupJour(newNbOccupant);
@@ -118,8 +118,8 @@ public class LocationListener implements android.location.LocationListener {
         boolean trancheHoraireExist = false;
         Calendar currentDate = Calendar.getInstance();
         currentDate.setTime(new Date());
-        int jourDeLaSemaine  = 5;//currentDate.get(Calendar.DAY_OF_WEEK);
-        int trancheHoraire = 1;//(currentDate.get(Calendar.HOUR) / 6) - 1;
+        int jourDeLaSemaine  = currentDate.get(Calendar.DAY_OF_WEEK);
+        int trancheHoraire = (currentDate.get(Calendar.HOUR) / 6) - 1;
 
         Iterator<OccupationJour> it = batiment.getOccupations().iterator();
 

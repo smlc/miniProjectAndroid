@@ -17,7 +17,11 @@
     <string name="prenom">Prenom</string>
     <string name="mail">Email</string>
     <string name="update">Mise à jour</string>
-
+    <string-array name="criticiter">
+        <item>CONFORT</item>
+        <item>PROBLEM</item>
+        <item>DANGER</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

@@ -55,7 +55,7 @@ public class OccupationActivity extends AppCompatActivity {
     private int[] jourCountRU2 = new int[jour];
     private int[] heureCountRU1 = new int[heure];
     private int[] heureCountRU2 = new int[heure];
-
+    private FirebaseDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -281,13 +281,65 @@ public class OccupationActivity extends AppCompatActivity {
         for (int i = 0; i< batimentList.size(); i++) {
             if (batimentList.get(i).getNom().equals(RU)) {
                 for(OccupationJour occupationBatiment : batimentList.get(i).getOccupations()){
-                    if (occupationBatiment.getJourSemaine() == jour) {
-                        count+= occupationBatiment.getJourSemaine();
+                    if (occupationBatiment.getNbrOccupHour() == hour) {
+                        count+= occupationBatiment.getNbrOccupHour();
                     }
                 }
             }
         }
         System.out.println("Count : " + count);
         return count;
+    }
+
+
+    private void getDataFromFireBase() {
+        database = FirebaseDatabase.getInstance();
+
+        //TODO remove
+       /* DatabaseReference myRef2 = database.getReference("batimentOccuper");
+
+        DatabaseReference userChild = myRef2.push();
+        userChild.setValue(new Batiment("RU1",  "Service", 43.562252, 1.463187));*/
+        DatabaseReference myRef = database.getReference("batimentOccuper");
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                Batiment occupationJourBatiment = dataSnapshot.getValue(Batiment.class);
+                batimentList.add(occupationJourBatiment);
+                for (int i=0; i<jour; i++) {
+                    jourCountRU1[i] = jourCountRU("RU1", i);
+                    jourCountRU2[i] = jourCountRU("RU2", i);
+                }
+
+                // Nb occupants RU1 & RU2 par heure
+                for (int i=0; i<heure; i++) {
+                    heureCountRU1[i] = heureCountRU("RU1", i);
+                    heureCountRU2[i] = heureCountRU("RU2", i);
+                }
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

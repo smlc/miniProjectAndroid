@@ -13,10 +13,24 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.sensor.compass"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.gyroscope"
+        android:required="true" />
+
 
     <application
         android:allowBackup="true"
@@ -67,8 +81,9 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity android:name=".Activity.BrowserActivity" />
         <activity android:name=".Activity.ConfigurationActivity" />
-        <activity android:name=".Activity.ParametresActivity"></activity>
-        <activity android:name=".Activity.AnomalieActivity"></activity>
+        <activity android:name=".Activity.ParametresActivity" />
+        <activity android:name=".Activity.AnomalieActivity" />
+        <activity android:name=".Activity.CreateAnomalieActivity"></activity>
     </application>
 
 </manifest>

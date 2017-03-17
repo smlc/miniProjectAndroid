@@ -26,7 +26,7 @@ public class User implements Parcelable{
         }
     };
 
-    private List<Anomalie> anomalies;
+    private ArrayList<Anomalie> anomalies;
     private String nomUser;
     private String prenomUser;
     private String photoUser;
@@ -52,7 +52,7 @@ public class User implements Parcelable{
         photoUser = in.readString();
         emailUser = in.readString();
         pswUser = in.readString();
-        List<Anomalie> list = null;
+        ArrayList<Anomalie> list = null;
         in.readList(list, Anomalie.class.getClassLoader());
         anomalies = list;
     }
@@ -66,12 +66,12 @@ public class User implements Parcelable{
         this.lienEmploisTemps = lienEmploisTemps;
     }
 
-    public List<Anomalie> getAnomalies() {
+    public ArrayList<Anomalie> getAnomalies() {
         return anomalies;
     }
     
 
-    public void setAnomalies(List<Anomalie> anomalies) {
+    public void setAnomalies(ArrayList<Anomalie> anomalies) {
         this.anomalies = anomalies;
     }
 

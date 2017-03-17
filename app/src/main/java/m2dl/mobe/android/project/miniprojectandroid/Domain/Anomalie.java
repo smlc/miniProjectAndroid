@@ -12,12 +12,13 @@ import java.util.Date;
 
 public class Anomalie implements Parcelable {
 
-    private String titreAnomalie;
+    private String titre;
     private Date dateAnomalie;
     private String photoAnomalie;
-    private Criticité typeCritic;
+    private Criticite criticiter;
     private String orientation;
-    private Location positionAnomalie;
+    private double lat;
+    private double longi;
     public static final Parcelable.Creator<Anomalie> CREATOR = new Parcelable.Creator<Anomalie>() {
         @Override
         public Anomalie createFromParcel(Parcel source) {
@@ -29,33 +30,78 @@ public class Anomalie implements Parcelable {
             return new Anomalie[size];
         }
     };
+
+    public Anomalie(){
+
+    }
     //Constructor
-    public Anomalie(String titreAnomalie, Date dateAnomalie, String photoAnomalie, Criticité typeCritic, String orientation, Location positionAnomalie) {
-        this.titreAnomalie = titreAnomalie;
+    public Anomalie(String titre, Date dateAnomalie, String photoAnomalie, Criticite criticiter, String orientation, double lat, double longi) {
+        this.titre = titre;
         this.dateAnomalie = dateAnomalie;
         this.photoAnomalie = photoAnomalie;
-        this.typeCritic = typeCritic;
+        this.criticiter = criticiter;
         this.orientation = orientation;
-        this.positionAnomalie = positionAnomalie;
+        this.lat = lat;
+        this.longi = longi;
     }
 
     public Anomalie(Parcel in) {
-        this.titreAnomalie = in.readString();
+        this.titre = in.readString();
         this.dateAnomalie = (Date) in.readSerializable();
         this.photoAnomalie = in.readString();
-        this.typeCritic = Criticité.valueOf(in.readString());
+        this.criticiter = Criticite.valueOf(in.readString());
         this.orientation = in.readString();
-        this.positionAnomalie = Location.CREATOR.createFromParcel(in);
+        this.lat = in.readDouble();
+        this.longi = in.readDouble();
     }
 
     //Accessors
 
-    public String getTitreAnomalie() {
-        return titreAnomalie;
+
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setTitreAnomalie(String titreAnomalie) {
-        this.titreAnomalie = titreAnomalie;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(titre);
+        dest.writeSerializable(dateAnomalie);
+        dest.writeString(photoAnomalie);
+        dest.writeString(criticiter.name());
+        dest.writeString(orientation);
+        dest.writeDouble(lat);
+        dest.writeDouble(longi);
+    }
+
+    @Override
+    public String toString() {
+        return titre + "  " + criticiter;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLongi() {
+        return longi;
+    }
+
+    public void setLongi(double longi) {
+        this.longi = longi;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     public Date getDateAnomalie() {
@@ -74,12 +120,12 @@ public class Anomalie implements Parcelable {
         this.photoAnomalie = photoAnomalie;
     }
 
-    public Criticité getTypeCritic() {
-        return typeCritic;
+    public Criticite getCriticiter() {
+        return criticiter;
     }
 
-    public void setTypeCritic(Criticité typeCritic) {
-        this.typeCritic = typeCritic;
+    public void setCriticiter(Criticite criticiter) {
+        this.criticiter = criticiter;
     }
 
     public String getOrientation() {
@@ -90,26 +136,4 @@ public class Anomalie implements Parcelable {
         this.orientation = orientation;
     }
 
-    public Location getPositionAnomalie() {
-        return positionAnomalie;
-    }
-
-    public void setPositionAnomalie(Location positionAnomalie) {
-        this.positionAnomalie = positionAnomalie;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(titreAnomalie);
-        dest.writeSerializable(dateAnomalie);
-        dest.writeString(photoAnomalie);
-        dest.writeString(typeCritic.name());
-        dest.writeString(orientation);
-        positionAnomalie.writeToParcel(dest,flags);
-    }
 }
