@@ -42,21 +42,21 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
 
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.AuthenficationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.AuthenficationActivity" />
+
         <activity android:name=".Activity.AccueilActivity" />
         <activity android:name=".Activity.OccupationActivity" />
         <activity android:name=".Activity.MaFacActivity" />
         <activity android:name=".Activity.EmploiDuTempsActivity" />
         <activity android:name=".Activity.InformationActivity" />
 
-        <!--
+        <!--    <activity android:name=".Activity.AuthenficationActivity" />
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
              Note that the API key is linked to the encryption key used to sign the APK.
